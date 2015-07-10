@@ -2,38 +2,127 @@
 <html>
 <head>
 <script src="cordova.js"></script>
+<link href="style.css" rel="stylesheet" />
 	<script>
-		function pageLoaded()
+		function checkLoad()
 		{
-			document.addEventListener("deviceready",siapsedia,false);
+			document.addEventListener("deviceready",startWork,false);
+		}
+		
+		function startWork()
+		{
+			navigator.notification.alert("Please regiester due to my assignment !",alertDismissed,"Information","OK");
+		}
+		
+		function takePicture(){
+			var options = 
+			{
+				quality:80,
+				destinationType:CAMERA.DestinationType.DATA_URL,//FILE_URI (data:image/jpeg;base64 - takpayah letak),NATIVE_URI (Default linux file),DATA_URL(data:image/jpeg;base64 - kne letak)
+				allowEdit:true,
+				encodingType:CAMERA.EncodingType.JPEG, //JPEG or PNG
+				targetWidth:200,
+				targetHeight:200,
+				sourceType: CAMERA.PictureSourceType.CAMERA//PHOTOLIBRARY (Picture folder in your device - photo gallery) , CAMERA(by default), SAVEDPHOTOALBUM (Camera folder)
+			};
+			navigator.camera.getPicture(onSuccess,onFailed,options);
+		}
+		
+		function onSuccess(imgURL)
+		{
+			document.getElementById("pic").src = "data:image/jpeg;base64," + imgURL;
+		}
+		
+		function onFailed(errorMsgWhyFail)
+		{
+			navigator.notification.alert("Failed because" + errorMsgWhyFail,alertDismissed,"FAIL","OK");
+		}
+		
+		function upperCaseText()
+		{
+			var x = document.getElementById("nameUser");
+			x.value = x.value.toUpperCase();
+					
+		}
+		
+		function photoLibrary(){
+			var options = 
+			{
+				quality:80,
+				destinationType:CAMERA.DestinationType.DATA_URL,//FILE_URI (data:image/jpeg;base64 - takpayah letak),NATIVE_URI (Default linux file),DATA_URL(data:image/jpeg;base64 - kne letak)
+				allowEdit:true,
+				encodingType:CAMERA.EncodingType.JPEG, //JPEG or PNG
+				targetWidth:200,
+				targetHeight:200,
+				sourceType: CAMERA.PictureSourceType.PHOTOLIBRARY//PHOTOLIBRARY (Picture folder in your device - photo gallery) , CAMERA(by default), SAVEDPHOTOALBUM (Camera folder)
+			};
+			navigator.camera.getPicture(SuccessLa,FailLa,options);
+		}
+		
+		function SuccessLa(imgURL)
+		{
+			document.getElementById("pic").src = "data:image/jpeg;base64," + imgURL;
+		}
+		
+		function FailLa(errorMsgWhyFail)
+		{
+			navigator.notification.alert("Failed because" + errorMsgWhyFail,alertDismissed,"FAIL","OK");
+		}
+		
+		function upperCaseText()
+		{
+			var x = document.getElementById("nameUser");
+			x.value = x.value.toUpperCase();
+					
+		}
+		
+		function checkEmail()
+		{
+			var e = document.getElementById("emailuser");
+			var btnRegister = document.getElementById("submit");
+			var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 			
-			document.addEventListener("resume",function(){
-				document.getElementById("msg").innerHTML = "App resume";
-			},false);
+			if(regex.test(e.value))
+			{
+				btnRegister.disabled = false;
+			}
+			else
+			{
+				btnRegister.disabled = true;
+			}
 		}
 		
-		function siapsedia()
+		function register()
 		{
-			navigator.notification.alert("App is ready",mulaKerja,"The new Test App","Sudah ! Jom Jalan");
+			var a = document.getElementById("nameUser").value;
+			var b = document.getElementById("emailuser").value;
+			
+			if(a == "" || b == "")
+			{
+				navigator.notification.alert("Please give your name and email address!",alertDismissed,"WARNING","OK");
+			}else
+			{
+				navigator.notification.alert("Success Register!",alertDismissed,"Done Registration","TQ");
+			}
 		}
-		
-		function mulakerja()
-		{
-			document.getElementById("msg").innerHTML = "Kerja boleh dimulakan";
-		}
-		
-	</script>
+	</script>	
 </head>
-<body>
-<h1>Welcome to phoneGap. </h1>
-<p id="msg"></p>
-
-
-<div>
-	Navigation:
-	<ul>
-		<li><a href="registerForm.html">Register!</a></li>
-	</ul>
-</div>
+<body onload="checkLoad()">
+	<div id="container">
+		<form onsubmit="register()">
+			<table class="box effect5">
+				<tr><th colspan="2" style="font-size:1em; text-decoration:underline; font-weight:bold;" >Registration Form</th></tr>
+				<tr><td>
+				<div id="profileImg" onclick="takePicture()"></div>
+				</td></tr>
+				<tr><td colspan="2" align="center"><input type="button" id="photoLib" onclick="photoLibrary" value="Take from Libary"/></td></tr>
+				<tr><td style="padding-left:1%;" colspan="2">Name</td></tr>
+				<tr><td style="padding-left:1%;" colspan="2"><input type="text" id="nameUser" onkeyup="upperCaseText()" required autocomplete="off" size="auto"/></td></tr>
+				<tr><td style="padding-left:1%;" colspan="2">Email</td></tr>
+				<tr><td style="padding-left:1%;" colspan="2"><input type="text" id="emailuser" onblur="checkEmail()" required autocomplete="off" size="auto"/></td></tr>
+				<tr><td style="padding-left:1%;" colspan="2" align="right"><input type="submit" id="submit" value="Register" disabled="disabled"/></td></tr>
+			</table>
+		</form>
+	</div>
 </body>
 </html>

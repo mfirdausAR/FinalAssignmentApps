@@ -18,12 +18,12 @@
 			var options = 
 			{
 				quality:80,
-				destinationType:CAMERA.DestinationType.DATA_URL,//FILE_URI (data:image/jpeg;base64 - takpayah letak),NATIVE_URI (Default linux file),DATA_URL(data:image/jpeg;base64 - kne letak)
+				destinationType:Camera.DestinationType.DATA_URL,//FILE_URI (data:image/jpeg;base64 - takpayah letak),NATIVE_URI (Default linux file),DATA_URL(data:image/jpeg;base64 - kne letak)
 				allowEdit:true,
-				encodingType:CAMERA.EncodingType.JPEG, //JPEG or PNG
+				encodingType:Camera.EncodingType.JPEG, //JPEG or PNG
 				targetWidth:200,
 				targetHeight:200,
-				sourceType: CAMERA.PictureSourceType.CAMERA//PHOTOLIBRARY (Picture folder in your device - photo gallery) , CAMERA(by default), SAVEDPHOTOALBUM (Camera folder)
+				sourceType: Camera.PictureSourceType.CAMERA//PHOTOLIBRARY (Picture folder in your device - photo gallery) , CAMERA(by default), SAVEDPHOTOALBUM (Camera folder)
 			};
 			navigator.camera.getPicture(onSuccess,onFailed,options);
 		}
@@ -49,12 +49,12 @@
 			var options2 = 
 			{
 				quality:80,
-				destinationType:CAMERA.DestinationType.DATA_URL,//FILE_URI (data:image/jpeg;base64 - takpayah letak),NATIVE_URI (Default linux file),DATA_URL(data:image/jpeg;base64 - kne letak)
+				destinationType:Camera.DestinationType.DATA_URL,//FILE_URI (data:image/jpeg;base64 - takpayah letak),NATIVE_URI (Default linux file),DATA_URL(data:image/jpeg;base64 - kne letak)
 				allowEdit:true,
-				encodingType:CAMERA.EncodingType.JPEG, //JPEG or PNG
+				encodingType:Camera.EncodingType.JPEG, //JPEG or PNG
 				targetWidth:200,
 				targetHeight:200,
-				sourceType: CAMERA.PictureSourceType.PHOTOLIBRARY//PHOTOLIBRARY (Picture folder in your device - photo gallery) , CAMERA(by default), SAVEDPHOTOALBUM (Camera folder)
+				sourceType: Camera.PictureSourceType.PHOTOLIBRARY//PHOTOLIBRARY (Picture folder in your device - photo gallery) , CAMERA(by default), SAVEDPHOTOALBUM (Camera folder)
 			};
 			navigator.camera.getPicture(SuccessLa,FailLa,options2);
 		}

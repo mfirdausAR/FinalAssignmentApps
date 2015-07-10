@@ -18,6 +18,8 @@
 		  <gap:splash src="1.png" />
 		  
 		  <feature name="http://api.phonegap.com/1.0/file" /> <!-- feature for permission see the file -->
+		  <feature name="http://api.phonegap.com/1.0/camera" />
+		  
 		  
 		  <gap:plugin name="org.apache.cordova.dialogs" version="0.2.10" /> <!-- Plugin for notification -->
 		  <gap:plugin name="org.apache.cordova.camera" version="0.3.2" /> <!-- Plugin for camera -->

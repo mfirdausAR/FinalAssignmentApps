@@ -16,7 +16,6 @@ body
 #profileImg
 {
 	position:relative;
-	background:white url("defaultPic.jpg") no-repeat fixed center;
 	width: 200px;
 	height: 200px;
 	margin:5px;

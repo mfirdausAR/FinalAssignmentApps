@@ -4,12 +4,12 @@
         id          = "com.phonegap.example"
         versionCode = "10" 
         version     = "1.0.0" >
-        <name>The new Test App</name>
+        <name>Registration Profile Apps</name>
         <description>
-            Learning PhoneGap can be fun
+            Testing Application for Final Assignment. Must DO !
         </description>
         <author href="https://build.phonegap.com" email="mfirdausAR@yahoo.com" >
-            DausRedSOx
+            RedSox
         </author>
         <content src="index.html" />
         <access origin="*" />

@@ -30,7 +30,7 @@
 		
 		function onSuccess(imgURL)
 		{
-			document.getElementById("pic").src = "data:image/jpeg;base64," + imgURL;
+			document.getElementById("profileImg").src = "data:image/jpeg;base64," + imgURL;
 		}
 		
 		function onFailed(errorMsgWhyFail)
@@ -61,7 +61,7 @@
 		
 		function SuccessLa(imgURL)
 		{
-			document.getElementById("pic").src = "data:image/jpeg;base64," + imgURL;
+			document.getElementById("profileImg").src = "data:image/jpeg;base64," + imgURL;
 		}
 		
 		function FailLa(errorMsgWhyFail)
@@ -73,6 +73,17 @@
 		{
 			var x = document.getElementById("nameUser");
 			x.value = x.value.toUpperCase();
+			var btnRegister = document.getElementById("submit");
+			var regex = /^[a-zA-Z\s]+$/;
+			
+			if(regex.test(x.value))
+			{
+				btnRegister.disabled = false;
+			}
+			else
+			{
+				btnRegister.disabled = true;
+			}
 					
 		}
 		
@@ -113,9 +124,10 @@
 			<table class="box effect5">
 				<tr><th colspan="2" style="font-size:1em; text-decoration:underline; font-weight:bold;" >Registration Form</th></tr>
 				<tr><td>
-				<div id="profileImg" onclick="takePicture()"></div>
+				<div id="profileImg"></div>
 				</td></tr>
-				<tr><td colspan="2" align="center"><input type="button" id="photoLib" onclick="photoLibrary" value="Take from Libary"/></td></tr>
+				<tr><td colspan="2" align="center"><input type="button" id="photoLib" onclick="takePicture()" value="Take Photo"/></td></tr>
+				<tr><td colspan="2" align="center"><input type="button" id="photoLib" onclick="photoLibrary()" value="Take from Libary"/></td></tr>
 				<tr><td style="padding-left:1%;" colspan="2">Name</td></tr>
 				<tr><td style="padding-left:1%;" colspan="2"><input type="text" id="nameUser" onkeyup="upperCaseText()" required autocomplete="off" size="auto"/></td></tr>
 				<tr><td style="padding-left:1%;" colspan="2">Email</td></tr>
